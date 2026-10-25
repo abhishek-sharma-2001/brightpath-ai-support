@@ -1,7 +1,8 @@
 # AI chat summary: BrightPath support assignment
 
-**Candidate:** Abhishek Sharma · **Role:** Forward Deployed Engineer, ClearTax
-**Tool:** Cursor (AI coding agent), one working session · **Date:** 25 Oct 2026
+**Candidate:** Abhishek Sharma · **Role:** Forward Deployed Engineer, ClearTax\
+**Tool:** Cursor (AI coding agent) · **Date:** 25–26 Oct 2026\
+**Live demo:** [brightpath-ai-support.vercel.app](https://brightpath-ai-support.vercel.app) · **Code:** [github.com/abhishek-sharma-2001/brightpath-ai-support](https://github.com/abhishek-sharma-2001/brightpath-ai-support)
 
 This summarises how the problem was worked through with the AI: the approach, what the analysis found, the decisions and trade-offs, and what was produced. The full recommendation is in `01_Solution_Memo.md`.
 
@@ -68,12 +69,14 @@ Instead of a generic Q&A bot, the demo shows each lever working: device-aware ha
 | Escalated tickets keep handling times near today's | The easy tickets get filtered out, so what's left is harder | More conservative than assuming diagnostics make every ticket faster |
 | Every assumption is a slider in the Impact tab | The assumptions are the debatable part, so stakeholders can test them live | None |
 | Basic Hinglish support ("paise kat gaye", "video nahi chal raha") | Indian exam-prep students often write this way | Keyword coverage is basic; production needs an LLM and evaluation in Hinglish and Hindi |
+| Hosted demo runs the Python backend in the browser (Pyodide) on Vercel | Serverless functions don't keep in-memory state, and reviewers opening the link at the same time would share one demo. In the browser, everyone gets a private, fresh demo from the same code that the tests cover | A few seconds of loading on the first visit, and the hosted version is rules-only (no API key in the browser) |
 
 ## 5. What was produced
 
 | Item | Description |
 |---|---|
 | `01_Solution_Memo.md` | Recommendation, numbers, workstreams, rollout and headcount path, guardrails, metrics, risks |
+| [Live demo](https://brightpath-ai-support.vercel.app) | The prototype hosted on Vercel, so it can be opened from a link with nothing to install |
 | `demo/` | Working prototype (student chat, support queue, finance approvals, insights, impact model) plus 24 tests |
 | `demo/capacity_model.py` | Reproducible model behind every number in the memo |
 | `screenshots/` | Screens from the demo walkthrough |

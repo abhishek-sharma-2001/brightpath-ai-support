@@ -2,6 +2,9 @@
 
 ClearTax · Forward Deployed Engineer · technical assignment · Abhishek Sharma
 
+- **Live demo:** [brightpath-ai-support.vercel.app](https://brightpath-ai-support.vercel.app) (no install, runs in the browser)
+- **Code:** [github.com/abhishek-sharma-2001/brightpath-ai-support](https://github.com/abhishek-sharma-2001/brightpath-ai-support)
+
 ## What's in this folder
 
 | File | What it is |
@@ -12,10 +15,11 @@ ClearTax · Forward Deployed Engineer · technical assignment · Abhishek Sharma
 | `demo/capacity_model.py` | The numbers behind the memo. `python capacity_model.py` prints every table. |
 | `screenshots/` | Screenshots of the demo flows. |
 | `run_demo.bat` | Double-click to start the demo and open it in your browser. |
+| `web/`, `vercel.json` | Build for the hosted demo on Vercel. |
 
 ## Run the demo
 
-Requires Python 3.10+ and nothing else (standard library only, no `pip install`).
+The quickest way is the [live demo](https://brightpath-ai-support.vercel.app). To run it locally you need Python 3.10+ and nothing else (standard library only, no `pip install`).
 
 ```powershell
 cd demo
@@ -65,3 +69,4 @@ capacity model   -> capacity_model.py (memo tables + Impact tab)
 - **The tool list is the guardrail.** The assistant has no way to issue a refund or move money. Approvals go through `finance.py`, which requires a reviewer's name, caps the amount at what was paid, rejects double decisions and writes an audit entry. A test checks that the assistant modules never import it.
 - **Answers come from data, not from the model.** Dates, amounts and statuses come from tool results, and the LLM (when enabled) only picks the intent. This avoids made-up class times or refund promises.
 - **Mocked for the demo:** students, courses, payments, gateway, messaging (SMS/WhatsApp/email) and the helpdesk. In production these become the real schedule, payment gateway, auth and helpdesk APIs; the playbooks and tools stay the same.
+- **Hosted version.** `demo/api.py` holds all the API routes; `server.py` serves them over HTTP locally. On Vercel, `web/build.mjs` publishes the same frontend and Python modules as a static site, and `web/browser-engine.js` runs them in the browser with [Pyodide](https://pyodide.org) (Python compiled to WebAssembly). Each visitor gets their own fresh demo, with no server state to share or lose. The hosted version always uses the rule-based classifier, so no API key is ever exposed. Every push to `main` redeploys.

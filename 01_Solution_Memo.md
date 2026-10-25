@@ -1,6 +1,6 @@
 # BrightPath Learning: "Make our support team smaller with AI"
 
-**Solution memo** · Abhishek Sharma · Forward Deployed Engineer assignment, ClearTax
+**Solution memo** · Abhishek Sharma · Forward Deployed Engineer assignment, ClearTax\
 Every number here comes from Exhibits A and B via `demo/capacity_model.py`, so it can be reproduced and challenged.
 
 ---
@@ -15,7 +15,7 @@ Every number here comes from Exhibits A and B via `demo/capacity_model.py`, so i
 2. **Tell students straight away that a failed payment reverses itself.** Today about 5 agents spend their time saying "wait 48 hours".
 3. **Have AI prepare every refund case so Finance only decides.** A human still approves every refund, but review drops from 25 minutes to about 10.
 
-**Recommendation:** commit to a range of **12–14 agents by month 6**, with each headcount step gated on service metrics, and treat the Android fix as part of the headcount plan rather than a backlog item. The working demo the CEO asked for is in `demo/` and runs today on mock data.
+**Recommendation:** commit to a range of **12–14 agents by month 6**, with each headcount step gated on service metrics, and treat the Android fix as part of the headcount plan rather than a backlog item. The working demo the CEO asked for runs today on mock data: [brightpath-ai-support.vercel.app](https://brightpath-ai-support.vercel.app) (code in `demo/`).
 
 ---
 
@@ -118,7 +118,7 @@ Full assumptions for each scenario are in the appendix. The **Impact model** tab
 
 | When | What ships | Team size |
 |---|---|---:|
-| **Week 1** | Working demo on mock data (done, see `demo/`). Get data access. Tag two weeks of real tickets to check Exhibit A's categories and handling times. Take the Android bug's cost to product leadership. | 30 |
+| **Week 1** | Working demo on mock data (done, [live here](https://brightpath-ai-support.vercel.app)). Get data access. Tag two weeks of real tickets to check Exhibit A's categories and handling times. Take the Android bug's cost to product leadership. | 30 |
 | **Weeks 2–4** | Proactive payment alerts (rules, no AI needed). Self-serve reset/OTP. Assistant live on chat and email for content questions. In-app Android workaround. | 30 (stop backfilling) |
 | **Months 2–3** | Payment gateway integration (live status, auto-unlock). Refund console with Finance. Video diagnostics. **Android fix ships.** | ~22–24 |
 | **Months 4–6** | Phone channel (IVR that sends a WhatsApp/chat link, or a voice bot). Tuning from QA findings. Expand knowledge. | **12–14** |
@@ -176,7 +176,7 @@ Full assumptions for each scenario are in the appendix. The **Impact model** tab
 
 ## 11. The demo (`demo/`)
 
-A working prototype the CEO can click through. Setup is in `README.md`.
+A working prototype the CEO can click through, live at [brightpath-ai-support.vercel.app](https://brightpath-ai-support.vercel.app). Local setup is in `README.md`.
 
 - **Student chat:** six students, each set up for a real scenario: Android video bug, failed payment under 48h, captured payment that never unlocked, low-risk refund, high-risk refund, forgotten password plus a payment stuck past 48h.
 - **Support queue:** only conversations the bot couldn't finish, each with an AI summary and the details already collected.
