@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BrightPath Support AI - Demo</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">BP</span>
+      <div>
+        <h1>BrightPath Support AI</h1>
+        <p>Working demo on mock data: student chat, support queue, finance approvals and impact model</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="pill" id="engine">Loading...</span>
+      <button id="reset" class="btn ghost">Reset demo</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="student-pane">
+      <div class="pane-head">
+        <h2>Student view</h2>
+        <span class="muted">In-app chat, WhatsApp or web</span>
+      </div>
+      <label class="persona">Student
+        <select id="persona"></select>
+      </label>
+      <p class="scenario" id="scenario"></p>
+
+      <div class="phone">
+        <div class="chat" id="chat"></div>
+        <div class="quick" id="quick"></div>
+        <form class="composer" id="composer">
+          <input id="input" placeholder="Type a message..." autocomplete="off">
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+      </div>
+
+      <div class="inbox-wrap">
+        <div class="pane-head small">
+          <h3>Messages sent to this student</h3>
+          <span class="muted">SMS / WhatsApp / email</span>
+        </div>
+        <div id="inbox"></div>
+      </div>
+    </section>
+
+    <section class="staff-pane">
+      <nav class="tabs" id="tabs">
+        <button data-tab="queue" class="active">Support queue <span class="badge" id="b-queue">0</span></button>
+        <button data-tab="finance">Finance approvals <span class="badge" id="b-finance">0</span></button>
+        <button data-tab="insights">Insights</button>
+        <button data-tab="impact">Impact model</button>
+      </nav>
+
+      <div class="tab-panel" id="tab-queue">
+        <div class="callout">
+          <div><b>Proactive payment alerts.</b> Simulate the payment gateway reporting a payment that "failed but
+            money was deducted". The student is told straight away, before they need to contact support.</div>
+          <div class="row">
+            <select id="wh-student"></select>
+            <button class="btn" id="wh-send">Send gateway webhook</button>
+            <button class="btn" id="ff">Fast-forward 48 hours</button>
+          </div>
+          <div id="sim-result" class="muted small"></div>
+        </div>
+        <p class="hint">Only conversations the assistant could not finish land here, with an AI summary and the
+          details already collected, so the agent never has to re-ask.</p>
+        <div id="tickets"></div>
+      </div>
+
+      <div class="tab-panel hidden" id="tab-finance">
+        <div class="callout warn">
+          <b>A human approves every refund.</b> The assistant has no tool that can issue a refund. It checks the
+          refund policy, scores fraud risk and prepares the case. Only a named reviewer can approve or reject, and
+          every decision is written to the audit log.
+        </div>
+        <div id="refunds"></div>
+        <h3 class="section">Audit log</h3>
+        <div id="audit"></div>
+      </div>
+
+      <div class="tab-panel hidden" id="tab-insights">
+        <div class="kpis" id="kpis"></div>
+        <h3 class="section">Outcomes by ticket type (this demo session)</h3>
+        <div id="by-intent"></div>
+        <h3 class="section">Product feedback loop</h3>
+        <div id="known-issues"></div>
+        <h3 class="section">Scheduled payment follow-ups</h3>
+        <div id="followups"></div>
+      </div>
+
+      <div class="tab-panel hidden" id="tab-impact">
+        <p class="hint">Same model as <code>capacity_model.py</code> and the solution memo. Pick a scenario, then drag
+          any assumption to see how many agents BrightPath needs in six months.</p>
+        <div class="scenario-buttons" id="scenario-buttons"></div>
+        <div class="impact-grid">
+          <div class="kpi-big">
+            <div class="kpi-label">Agents needed</div>
+            <div class="kpi-value" id="kpi-agents">-</div>
+            <div class="kpi-sub" id="kpi-sub"></div>
+          </div>
+          <div>
+            <div class="legend"><span class="sw base"></span>Today <span class="sw after"></span>After six months</div>
+            <div id="bars"></div>
+          </div>
+        </div>
+        <h3 class="section">Where the savings come from</h3>
+        <div id="waterfall"></div>
+        <h3 class="section">Assumptions</h3>
+        <div id="sliders" class="sliders"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+dist/
+.vercel/
+node_modules/
+submission/
+assignment.txt
