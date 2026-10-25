@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 dist/
 .vercel/
+.env*
 node_modules/
 submission/
 assignment.txt
